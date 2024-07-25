@@ -21,7 +21,7 @@ export interface DirectionOfView {
     pitch: Radian;
     yaw: Radian;
 }
-export declare type Orientation = 'ceiling' | 'floor' | 'wall';
+export declare type Orientation = 'ceiling' | 'floor' | 'wall' | 'wall-flipped';
 /**
  * Convert fish eye cnv to perspective projection
  * A reusable gl renderer that can dynamically change the source cnv
