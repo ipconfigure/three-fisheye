@@ -811,6 +811,7 @@ var __extends = (this && this.__extends) || (function () {
                         this.yaw = 0;
                         this.zoom = 0.5;
                         break;
+                    case 'wall-flipped':
                     case 'wall':
                         this.CAMERA_PITCH_MIN = -1 * Math.PI / 2;
                         this.CAMERA_PITCH_MAX = Math.PI / 2;
@@ -822,7 +823,7 @@ var __extends = (this && this.__extends) || (function () {
                         break;
                 }
                 if (this.meshes !== undefined && this.meshes.length > 0) {
-                    if (this.orientation === 'wall') {
+                    if (this.orientation === 'wall' || this.orientation === 'wall-flipped') {
                         this.meshes[0].rotation.z = 0;
                     }
                     else {
@@ -876,7 +877,7 @@ var __extends = (this && this.__extends) || (function () {
                 if (this.orientation === 'ceiling') {
                     return (this.local.rotation.x - Math.PI);
                 }
-                else if (this.orientation === 'wall') {
+                else if (this.orientation === 'wall' || this.orientation === 'wall-flipped') {
                     return (-1 * Math.PI / 2 - this.local.rotation.x);
                 }
                 else {
@@ -888,7 +889,7 @@ var __extends = (this && this.__extends) || (function () {
                     if (this.orientation === 'ceiling') {
                         this.local.rotation.x = Math.PI + pitch;
                     }
-                    else if (this.orientation === 'wall') {
+                    else if (this.orientation === 'wall' || this.orientation === 'wall-flipped') {
                         this.local.rotation.x = -1 * Math.PI / 2 - pitch;
                     }
                     else {
@@ -918,7 +919,7 @@ var __extends = (this && this.__extends) || (function () {
                     return this._yaw;
                 }
                 else {
-                    if (this.orientation === 'wall') {
+                    if (this.orientation === 'wall' || this.orientation === 'wall-flipped') {
                         return -1 * this.meshes[0].rotation.y;
                     }
                     else {
@@ -934,7 +935,7 @@ var __extends = (this && this.__extends) || (function () {
                     this._yaw = yaw;
                 }
                 else {
-                    if (this.orientation === 'wall') {
+                    if (this.orientation === 'wall' || this.orientation === 'wall-flipped') {
                         this.meshes[0].rotation.y = -1 * yaw;
                     }
                     else {
@@ -1081,7 +1082,7 @@ var __extends = (this && this.__extends) || (function () {
             // Normalize the acquired screen coordinates to -1 to 1 (the coordinates are represented by WebGL from -1 to 1)
             var mouseX = (offsetX / width) * 2 - 1;
             var mouseY = -(offsetY / height) * 2 + 1;
-            if (this.orientation === 'ceiling') {
+            if (this.orientation === 'ceiling' || this.orientation === 'wall-flipped') {
                 mouseX *= -1;
                 mouseY *= -1;
             }
@@ -1113,7 +1114,7 @@ var __extends = (this && this.__extends) || (function () {
             if (_pitch < this.CAMERA_PITCH_MIN) {
                 _pitch = this.CAMERA_PITCH_MIN;
             }
-            if (this.orientation === 'wall') {
+            if (this.orientation === 'wall' || this.orientation === 'wall-flipped') {
                 if (_yaw > this.CAMERA_YAW_MAX) {
                     _yaw = this.CAMERA_YAW_MAX;
                 }
