@@ -463,7 +463,7 @@ export class Fisheye2Perspective extends Fisheye<THREE.PerspectiveCamera> {
     var mouseX =  (offsetX/width)  * 2 - 1;
     var mouseY = -(offsetY/height) * 2 + 1;
 
-    if(this.orientation === 'ceiling' || this.orientation === 'wall-flipped') {
+    if(this.orientation === 'ceiling') {
         mouseX *= -1;
         mouseY *= -1;
     }
