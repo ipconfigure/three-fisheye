@@ -207,6 +207,15 @@ export class Fisheye2Perspective extends Fisheye<THREE.PerspectiveCamera> {
             this.zoom = 0.5; 
             break;
         case 'wall-flipped':
+            this.CAMERA_PITCH_MIN = -1 * Math.PI/2;
+            this.CAMERA_PITCH_MAX = Math.PI/2;
+            this.CAMERA_YAW_MIN = -1 * Math.PI/2;
+            this.CAMERA_YAW_MAX = Math.PI/2;
+
+            this.pitch = 0;
+            this.yaw = 2;
+            this.zoom = 0.5; 
+            break;
         case 'wall':
             this.CAMERA_PITCH_MIN = -1 * Math.PI/2;
             this.CAMERA_PITCH_MAX = Math.PI/2;
@@ -220,8 +229,10 @@ export class Fisheye2Perspective extends Fisheye<THREE.PerspectiveCamera> {
     }
 
     if(this.meshes !== undefined && this.meshes.length > 0) {
-        if (this.orientation === 'wall' || this.orientation === 'wall-flipped') {
+        if (this.orientation === 'wall') {
             this.meshes[0].rotation.z = 0; 
+        } else if (this.orientation === 'wall-flipped') {
+            this.meshes[0].rotation.z = Math.PI; 
         } else {
             this.meshes[0].rotation.y = 0;
         }
