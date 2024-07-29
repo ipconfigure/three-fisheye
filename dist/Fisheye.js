@@ -546,6 +546,7 @@ var __extends = (this && this.__extends) || (function () {
         Fisheye2Equirectangular.prototype.updateCameraOrientation = function () {
             switch (this.cameraOrientation) {
                 case 'ceiling':
+                case 'wall-flipped':
                     this.camera.rotation.z = Math.PI;
                     break;
                 case 'wall':
@@ -836,6 +837,7 @@ var __extends = (this && this.__extends) || (function () {
                     }
                     else if (this.orientation === 'wall-flipped') {
                         this.meshes[0].rotation.z = Math.PI;
+                        this.meshes[0].rotation.y = 0;
                     }
                     else {
                         this.meshes[0].rotation.y = 0;

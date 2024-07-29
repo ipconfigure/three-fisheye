@@ -233,6 +233,7 @@ export class Fisheye2Perspective extends Fisheye<THREE.PerspectiveCamera> {
             this.meshes[0].rotation.z = 0; 
         } else if (this.orientation === 'wall-flipped') {
             this.meshes[0].rotation.z = Math.PI; 
+            this.meshes[0].rotation.y = 0;
         } else {
             this.meshes[0].rotation.y = 0;
         }

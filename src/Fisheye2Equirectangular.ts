@@ -1,7 +1,7 @@
 import * as THREE from "three";
 import {Fisheye, mercator2Sphere, sphere2Fisheye} from "./Fisheye";
 
-export type Orientation = 'ceiling' | 'floor' | 'wall';
+export type Orientation = 'ceiling' | 'floor' | 'wall' | 'wall-flipped';
 
 /**
  * Equirectangular Cylindrical Mercator
@@ -77,6 +77,7 @@ export class Fisheye2Equirectangular extends Fisheye<THREE.OrthographicCamera> {
   private updateCameraOrientation(): void {
     switch(this.cameraOrientation) {
         case 'ceiling':
+        case 'wall-flipped':
             this.camera.rotation.z = Math.PI;
             break;
         case 'wall':

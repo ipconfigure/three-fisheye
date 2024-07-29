@@ -1,6 +1,6 @@
 import * as THREE from "three";
 import { Fisheye } from "./Fisheye";
-export declare type Orientation = 'ceiling' | 'floor' | 'wall';
+export declare type Orientation = 'ceiling' | 'floor' | 'wall' | 'wall-flipped';
 /**
  * Equirectangular Cylindrical Mercator
 * http://wiki.panotools.org/Projections
